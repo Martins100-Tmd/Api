@@ -17,6 +17,10 @@ app.get("/", async (req, res) => {
   res.status(200).json({ message: "Hello World", users });
 });
 
+app.get("*", async (req, res) => {
+  let users = await User.findAll();
+  res.status(200).json({ message: "Hello World", users });
+});
 //Get all users route
 app.get("/users", async (req, res) => {
   const all = await User.findAll({
